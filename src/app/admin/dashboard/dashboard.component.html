@@ -1,0 +1,31 @@
+<div class='dashboard' *ngIf="products.length; else loading">
+	<h2>Dashboard of products</h2>
+	<div class='find-input'>
+		<input type='text' placeholder='Find a product...' [(ngModel)]='productName'>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Date of creation</th>
+				<th>Open</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let product of products | search : productName; let i = index">
+				<td>{{ i + 1 }}</td>
+				<td>{{ product.title }}</td>
+				<td>{{ product.price }}$</td>
+				<td>{{ product.date | date:'short'}}</td>
+				<td><button class='open' [routerLink]="['/admin','product',product.id, 'edit']">Open</button></td>
+				<td><button (click)="remove(product.id)">Delete</button></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<ng-template #loading>
+	<mat-progress-bar mode="indeterminate" value='40'></mat-progress-bar>
+</ng-template>

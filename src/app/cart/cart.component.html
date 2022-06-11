@@ -1,0 +1,66 @@
+<div class='order' *ngIf ="cartProducts.length > 0; else empty">
+	<h2>Your order:</h2>
+	<table>
+		<tbody>
+			<tr *ngFor="let cartProduct of cartProducts; let i = index">
+				<td>{{ cartProduct.type }}</td>
+				<td>{{ cartProduct.title }}</td>
+				<td><button (click)="delete(cartProduct)">Delete</button></td>
+				<td>{{ cartProduct.price }}$</td>
+			</tr>
+		</tbody>
+	</table>
+	<hr>
+	<b>Total: {{ totalPrice }} $</b>
+	
+
+	<h2>Delivery:</h2>
+<form [formGroup]="form" (ngSubmit)="submit()">
+	<div class='form-name'>
+		<label for="name">Name</label>
+		<input id="name" type="name" formControlName="name">
+		<div *ngIf="form.get('name').touched && form.get('name').invalid">
+			<small *ngIf="form.get('name').errors.required">Enter your name</small>
+		</div>
+	</div>
+	<div class='form-name'>
+		<label for="phone">Phone number</label>
+		<input
+			prefix="+90 "
+			mask=" (000) 000 00 00"
+			id="phone" 
+			type="phone" 
+			placeholder='+90 (537) 261-41-07'
+			formControlName="phone">
+		<div *ngIf="form.get('phone').touched && form.get('phone').invalid">
+			<small *ngIf="form.get('phone').errors.required">Enter your phone number</small>
+			<small *ngIf="form.get('phone').errors.minlength">
+				Number must be {{form.get('phone').errors.minlength.requiredLength}}
+				symbols. Now he {{form.get('phone').errors.minlength.actualLength}}
+			</small>
+		</div>
+	</div>
+	<div class='form-name'>
+		<label for="addres">Address</label>
+		<input id="addres" type="addres" formControlName="addres">
+		<div *ngIf="form.get('addres').touched && form.get('addres').invalid">
+			<small *ngIf="form.get('addres').errors.required">Enter your addres</small>
+		</div>
+	</div>
+	<div class='form-name'>
+		<label for="payment">Payment method:</label>
+		<select formControlName='payment'>
+			<option value='Cash'>Cash</option>
+			<option value='Card'>Card</option>
+		</select>
+	</div>
+	<button class='btn-add' type='submit' [disabled]='form.invalid || submitted'>ADD</button>
+	<small class='small-add' *ngIf="added">Delivery is framed</small>
+</form>
+
+</div>
+<ng-template #empty>
+	<div class='empty'>
+		Cart is empty, select a burger
+	</div>
+</ng-template>

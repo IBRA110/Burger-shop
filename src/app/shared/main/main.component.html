@@ -1,0 +1,51 @@
+<nav class='nav-bar'>
+	<a [routerLink]="['']">
+		<img src="../../assets/images/logo.png">
+	</a>
+	<ul [ngStyle]="{opacity: toggle ? '1' : '0', 
+									visibility: toggle ? 'visible' : 'hidden', 
+									pointerEvents: toggle ? 'auto': 'none'}">
+	<li routerLinkActive='active'> <!-- Определить какая ссылка нажата -->
+		<a [routerLink]="['']" (click)='change()'>HOME</a>
+	</li>
+	<li routerLinkActive='active'>
+	  <a [routerLink]="['/about']" (click)='change()'>ABOUT US</a>
+	</li>
+	<li routerLinkActive='active'>
+	  <a [routerLink]="['/menu']" (click)='change()'>MENU +</a>
+		<ul>
+			<li routerLinkActive='active'> <!-- Определить какая ссылка нажата -->
+				<a [routerLink]="['/menu/all']" (click)='change()'>All</a>
+			</li>
+			<li routerLinkActive='active'>
+				<a [routerLink]="['/menu/burgers']" (click)='change()'>Burgers</a>
+			</li>
+			<li routerLinkActive='active'>
+				<a [routerLink]="['/menu/cheese-burgers']" (click)='change()'>Cheese burgers</a>
+			</li>
+			<li routerLinkActive='active'>
+				<a [routerLink]="['/menu/dobble-burgers']" (click)='change()'>Dobble burgers</a> <!-- Указываем ссылку к роуту -->
+			</li>
+		</ul>
+	</li>
+	<li routerLinkActive='active'>
+		<a [routerLink]="['/cart']" (click)='change()'>
+			CART
+		</a>
+	</li>
+	</ul>
+	<label>
+		<input type='checkbox' name='' (change)='change()'>
+		<div class='bar'>
+			<span class='top' [ngStyle]="{transform: toggle ? 'rotate(-45deg)' : 'rotate(0deg)', transformOrigin: 'right'}"></span>
+			<span class='mid' 
+				[ngStyle]="{transform: toggle ? 'translateX(-45%)' : 'translateX(0)', opacity: toggle ? '0' : '1'}">
+			</span>
+			<span class='bot' [ngStyle]="{transform: toggle ? 'rotate(45deg)' : 'rotate(0deg)', transformOrigin: 'right'}"></span>
+		</div>
+	</label>
+</nav>
+<main [@routeAnimations]="prepareRoute(outlet)">
+	<router-outlet #outlet="outlet"></router-outlet>
+</main>
+<footer><p>created by <span>Mamedov Ibrahim</span> | all rights reserved!</p></footer>

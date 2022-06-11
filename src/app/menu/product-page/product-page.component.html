@@ -1,0 +1,23 @@
+<div class='product-content' *ngIf='product$ | async as product; else loading'>
+			<div class='product-img'>
+				<h2>{{ product.title }}</h2>
+				<div class='product-img-q'>
+					<quill-view-html [content]="product.photo"></quill-view-html>
+				</div>
+				<div>
+					<h2>Price: {{ product.price }}$</h2>
+					<button (click)="addProduct(product)">Add to cart</button>
+					<small class='small-add' *ngIf="added">Product added</small>
+				</div>
+			</div>
+			<div class='product-info'>
+				<h2>Information</h2>
+				<p>
+					<quill-view-html [content]="product.info"></quill-view-html>
+				</p>
+			</div>
+</div>
+
+<ng-template #loading>
+	<mat-progress-bar mode="indeterminate" value='40'></mat-progress-bar>
+</ng-template>

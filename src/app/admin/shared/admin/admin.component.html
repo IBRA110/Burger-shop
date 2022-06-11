@@ -1,0 +1,26 @@
+<nav class='log-nav'>
+	<a class='link-to-view' routerLink='/'>View site</a>
+	<ul *ngIf='auth.isAuthenticated(); else login'>
+		<li routerLinkActive='active'>
+			<a [routerLink]="['/admin', 'dashboard']">DASHBOARD</a>
+		</li>
+		<li routerLinkActive='active'>
+			<a [routerLink]="['/admin', 'add']">ADD PRODUCT</a>
+		</li>
+		<li routerLinkActive='active'>
+			<a [routerLink]="['/admin', 'orders']">ORDERS</a>
+		</li>
+		<li routerLinkActive='active'>
+			<a href='#' (click)='logout($event)'>LOGOUT</a>
+		</li>
+	</ul>
+	<ng-template #login>
+	<ul>
+		<li routerLinkActive='active'>
+			<a [routerLink]="['/admin', 'login']">LOGIN</a>
+		</li>
+	</ul>
+	</ng-template>
+</nav>
+<router-outlet></router-outlet>
+

@@ -1,1 +1,118 @@
+$yellow:#eacf4f;
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$burger-shop-primary: mat.define-palette(mat.$indigo-palette);
+$burger-shop-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$burger-shop-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$burger-shop-theme: mat.define-light-theme((
+  color: (
+    primary: $burger-shop-primary,
+    accent: $burger-shop-accent,
+    warn: $burger-shop-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($burger-shop-theme);
+
 /* You can add global styles to this file, and also import other style files */
+@import "~quill/dist/quill.snow.css";
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;500;600&display=swap');
+
+
+
+/*Обнуление*/
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+	image-rendering: -webkit-optimize-contrast;
+}
+*,*:before,*:after
+{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body
+{
+	scroll-behavior: auto !important;
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+
+/*input::-ms-clear{display: none;}*/
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+/*--------------------*/
+
+
+body{
+  font-family: 'Raleway', sans-serif;
+	background-image: url('/assets/images/background.jpg');
+	background-position: center;
+	background-attachment: fixed;
+}
+.wrapper{
+	height: 100%;
+
+	app-main{
+		display: flex;
+		min-height: 100%;
+		flex-direction: column;
+		background-image: url('/assets/images/home-bg.png');
+		background-size: cover;
+		background-attachment: fixed;	
+	}
+}
+main{
+	position: relative;
+	flex: 1 1 auto;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@media(max-width: 768px){
+	.wrapper{
+		app-main{
+			background-image: none;
+		}
+	}
+}
+

@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiKey: "AIzaSyAk4nuHBgDVZwth1L61Gpn1pvkFXLFprio", // вставляем apiKey из сайта сервера
+  fbDbUrl: 'https://online-burgers-default-rtdb.firebaseio.com/'
 };
 
 /*

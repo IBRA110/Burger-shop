@@ -1,0 +1,8 @@
+<div *ngIf="products$ | async as products; else loading">
+	<app-product *ngFor="let product of products | sorting: 'Cheese-Burger'" [product]="product">
+	</app-product>
+</div>
+
+<ng-template #loading>
+	<mat-progress-bar mode="indeterminate" value='40'></mat-progress-bar>
+</ng-template>

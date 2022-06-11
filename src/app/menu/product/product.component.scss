@@ -1,0 +1,51 @@
+$yellow:#eacf4f;
+// calc(60px + 20 * (100vw / 1920));
+$red:rgb(173, 35, 28);
+$green: rgb(43, 173, 28);
+
+.product{
+	width: calc(300px + 100 * (100vw / 1920));
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 50px;
+
+	div{
+		width: calc(200px + 20 * (100vw / 1920));
+	}
+	h2{
+		font-weight: bold;
+		font-size: calc(30px + 2 * (100vw / 1920));
+		color: rgba(255,255,255);
+		padding: 0px 5px;
+	}
+	button{
+		width: 50%;
+		height: 40px;
+		margin: 20px 0px 5px 0px;
+		background-color: rgba(0,0,0,0);
+		border: 1px solid rgba(255,255,255);
+		color: rgba(255,255,255);
+		font-size: calc(19px + 5 * (100vh / 1920));
+	}
+	button:hover{
+		color: rgb(0,0,0);
+		background-color: $yellow;
+		border: 1px solid rgba(0,0,0);
+	}
+	small{
+		color: $green;
+		font-size: 20px;
+	}
+}
+
+@media(max-width: 768px){
+	.product{
+		width: 100%;
+
+		div{
+			width: 100%;
+		}
+	}
+}
